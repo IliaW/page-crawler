@@ -2,8 +2,6 @@ services:
   app:
     build:
       context: .
-      args:
-        GITHUB_ACCESS_TOKEN: ${GITHUB_ACCESS_TOKEN}
     environment:
       - ENV=local
       - S3.AWS_BASE_ENDPOINT=http://localstack:4566
