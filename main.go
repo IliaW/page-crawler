@@ -18,6 +18,8 @@ import (
 	"syscall"
 	"time"
 
+	_ "net/http/pprof"
+
 	"github.com/IliaW/page-crawler/config"
 	"github.com/IliaW/page-crawler/internal/aws_s3"
 	"github.com/IliaW/page-crawler/internal/broker"

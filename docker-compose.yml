@@ -20,7 +20,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./database/migration/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./test_data/database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   cache:
     image: memcached:1.6
@@ -59,9 +59,9 @@ services:
       # blocks until kafka is reachable
       kafka-topics --bootstrap-server kafka:19092 --list
       echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka:19092 --create --if-not-exists --topic web-crawler-page-crawler-topic-v1-local --replication-factor 1 --partitions 3
       kafka-topics --bootstrap-server kafka:19092 --create --if-not-exists --topic page-crawler-content-processor-topic-v1-local --replication-factor 1 --partitions 3
       kafka-topics --bootstrap-server kafka:19092 --create --if-not-exists --topic page-crawler-dlq-topic-v1-local --replication-factor 1 --partitions 3
-      kafka-topics --bootstrap-server kafka:19092 --create --if-not-exists --topic web-crawler-page-crawler-topic-v1-local --replication-factor 1 --partitions 3
       echo -e 'Successfully created the following topics:'
       kafka-topics --bootstrap-server kafka:19092 --list
       "
