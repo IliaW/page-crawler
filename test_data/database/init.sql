@@ -71,6 +71,6 @@ CREATE USER web_crawler_rw_user WITH PASSWORD 'test';
 GRANT USAGE ON SCHEMA web_crawler TO web_crawler_rw_user;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA web_crawler TO web_crawler_rw_user;
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA web_crawler TO web_crawler_rw_user;
-ALTER DEFAULT PRIVILEGES IN SCHEMA web_crawler GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO dweb_crawler_rw_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA web_crawler GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO web_crawler_rw_user;
 GRANT EXECUTE ON FUNCTION web_crawler.set_updated_at TO web_crawler_rw_user;
 GRANT EXECUTE ON FUNCTION web_crawler.hash_api_key TO web_crawler_rw_user;
